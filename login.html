@@ -1,84 +1,121 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Sell Your Hobby</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Sell Your Hobby</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
 
-    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+    }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    main {
+      max-width: 400px;
+      margin: 80px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      font-weight: 700;
+      color: #007BFF;
+      margin-bottom: 20px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 1em;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      font-weight: 600;
+      font-size: 1.1em;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    p {
+      text-align: center;
+      color: #555;
+      margin-top: 15px;
+    }
+
+    a {
+      color: #007BFF;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
-<body id="top">
+<body>
 
-    <header class="header" data-header>
-        <!-- Your header content remains unchanged -->
-    </header>
+  <main>
+    <h2>Welcome Back</h2>
 
-    <main class="container"
-        style="max-width: 400px; margin: 80px auto; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.1); font-family: 'Poppins', sans-serif;">
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Your Email" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
 
-        <h2 style="text-align: center; font-weight: 700; color: #333;">Hobbyist Login</h2>
-        <p style="text-align: center; color: #666; margin-bottom: 30px;">Login to offer your hobby services to customers
-        </p>
-
-        <form id="loginForm">
-
-            <label for="email" style="font-weight: 500;">Email</label>
-            <input type="email" id="email" name="email" required placeholder="Your email"
-                style="width: 100%; padding:12px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd; font-size: 1em;">
-
-            <label for="password" style="font-weight: 500;">Password</label>
-            <input type="password" id="password" name="password" required placeholder="Your password"
-                style="width: 100%; padding:12px; margin-bottom:25px; border-radius:8px; border:1px solid #ddd; font-size: 1em;">
-
-            <button type="submit" class="btn btn-primary"
-                style="width: 100%; padding: 14px; font-weight: 600; font-size: 1.1em; background-color: #007BFF; color: white; border: none; border-radius:8px; cursor: pointer;">
-                Login
-            </button>
-
-            <p style="text-align: center; margin-top: 15px; color: #555;">
-                Don't have an account? <a href="signup.html" style="color: #007BFF; text-decoration: none;">Sign up</a>
-            </p>
-        </form>
-
-    </main>
+      <button type="submit">Login</button>
+      <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+    </form>
+  </main>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const loginForm = document.getElementById('loginForm');
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
 
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+      const enteredEmail = document.getElementById('loginEmail').value;
+      const enteredPassword = document.getElementById('loginPassword').value;
 
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+      // Retrieve stored data from localStorage
+      const storedEmail = localStorage.getItem('userEmail');
+      const storedPassword = localStorage.getItem('signupPassword'); // optional if we store password later
+      const userType = localStorage.getItem('userType');
 
-            const storedEmail = localStorage.getItem('userEmail');
-            const storedProfilePic = localStorage.getItem('userProfilePic');
+      // For now, since password isn't saved (for security), we just check email
+      if (enteredEmail === storedEmail) {
+        alert('Login successful!');
 
-            if (email === storedEmail && storedProfilePic) {
-                alert('Login successful!');
-                location.href = 'index.html';
-            } else {
-                alert('Invalid credentials or account not found. Please sign up.');
-            }
-        });
+        if (userType === 'hobbyist') {
+          location.href = 'hobbyist-dashboard.html';
+        } else {
+          location.href = 'index.html';
+        }
+      } else {
+        alert('Invalid email. Please sign up first.');
+      }
     });
-</script>
-
+  </script>
 
 </body>
 
