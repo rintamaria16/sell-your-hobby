@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Signup - Sell Your Hobby</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="style.css">
 
   <style>
     body {
@@ -116,70 +116,88 @@
         <input type="text" id="hobbyRegion" placeholder="Region / Location">
       </div>
 
+<select id="userType" required>
+  <option value="">Select Account Type</option>
+  <option value="normal">Normal User</option>
+  <option value="hobbyist">Hobbyist</option>
+</select>
+
+<div id="hobbyistFields" style="display: none;">
+  <input type="text" id="hobbyName" placeholder="Enter Your Hobby">
+  <input type="number" id="hobbyPrice" placeholder="Price for Your Hobby">
+  <input type="text" id="hobbyRegion" placeholder="Your Region">
+</div>
+
+
+
+
+
+      
+
       <button type="submit">Sign Up</button>
       <p>Already have an account? <a href="login.html">Login here</a></p>
     </form>
   </main>
 
-  <script>
-    const userTypeSelect = document.getElementById('userType');
-    const hobbyistFields = document.getElementById('hobbyistFields');
+<script>
+  document.getElementById('signupForm').addEventListener('submit', (e) => {
+    e.preventDefault();
 
-    userTypeSelect.addEventListener('change', () => {
-      if (userTypeSelect.value === 'hobbyist') {
-        hobbyistFields.style.display = 'block';
-        // make required for hobbyist
-        document.getElementById('hobbyName').required = true;
-        document.getElementById('hobbyPrice').required = true;
-        document.getElementById('hobbyRegion').required = true;
-      } else {
-        hobbyistFields.style.display = 'none';
-        // remove required when normal user
-        document.getElementById('hobbyName').required = false;
-        document.getElementById('hobbyPrice').required = false;
-        document.getElementById('hobbyRegion').required = false;
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+    const file = document.getElementById('profilePicInput').files[0];
+    const userType = document.getElementById('userType').value; // new field for type
+
+    let hobby = "", price = "", region = "";
+
+    // If hobbyist, collect extra info
+    if (userType === "hobbyist") {
+      hobby = document.getElementById('hobbyName').value;
+      price = document.getElementById('hobbyPrice').value;
+      region = document.getElementById('hobbyRegion').value;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function () {
+      // Store common data
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('signupPassword', password);
+      localStorage.setItem('userProfilePic', reader.result);
+      localStorage.setItem('userType', userType);
+
+      // Store hobbyist data
+      if (userType === "hobbyist") {
+        localStorage.setItem('userHobby', hobby);
+        localStorage.setItem('userPrice', price);
+        localStorage.setItem('userRegion', region);
       }
-    });
 
-    document.getElementById('signupForm').addEventListener('submit', (e) => {
-      e.preventDefault();
+      alert('Signup successful!');
 
-      const email = document.getElementById('signupEmail').value;
-      const password = document.getElementById('signupPassword').value;
-      const file = document.getElementById('profilePicInput').files[0];
-      const userType = document.getElementById('userType').value;
+      // Redirect based on type
+      if (userType === "hobbyist") {
+        location.href = 'hobbyist-dashboard.html';
+      } else {
+        location.href = 'index.html';
+      }
+    };
+    reader.readAsDataURL(file);
+  });
 
-      const reader = new FileReader();
-      reader.onload = function () {
-        // Save base info
-        localStorage.setItem('userEmail', email);
-        localStorage.setItem('userProfilePic', reader.result);
-        localStorage.setItem('userType', userType);
+ document.getElementById('userType').addEventListener('change', function () {
+    document.getElementById('hobbyistFields').style.display =
+      this.value === 'hobbyist' ? 'block' : 'none';
+  });
 
-        if (userType === 'hobbyist') {
-          const hobbyName = document.getElementById('hobbyName').value;
-          const hobbyPrice = document.getElementById('hobbyPrice').value;
-          const hobbyRegion = document.getElementById('hobbyRegion').value;
 
-          const hobbyData = {
-            hobbyName,
-            hobbyPrice,
-            hobbyRegion
-          };
-          localStorage.setItem('hobbyistData', JSON.stringify(hobbyData));
-        }
 
-        alert('Signup successful!');
+  
+</script>
 
-        if (userType === 'hobbyist') {
-          location.href = 'hobbyist-dashboard.html';
-        } else {
-          location.href = 'index.html';
-        }
-      };
-      reader.readAsDataURL(file);
-    });
-  </script>
+
+
+
+  
 </body>
 
 </html>
