@@ -3,270 +3,873 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travel Website</title>
-  <link rel="stylesheet" href="style.css">
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <title>Tourly - Travel agancy</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
 </head>
 
-<body>
+<body id="top">
 
-  <!-- HEADER -->
-  <header class="header">
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+
+    <div class="overlay" data-overlay></div>
+
     <div class="header-top">
       <div class="container">
-        <div class="logo">
-          <img src="logo.svg" alt="Logo">
-          <h1>TravelSite</h1>
-        </div>
-        <div class="helpline-box">
-          <div class="icon-box"><ion-icon name="call-outline"></ion-icon></div>
-          <div class="wrapper">+123 456 7890</div>
-        </div>
+
+        <a href="tel:+01123456790" class="helpline-box">
+
+          <div class="icon-box">
+            <ion-icon name="call-outline"></ion-icon>
+          </div>
+
+          <div class="wrapper">
+            <p class="helpline-title">For Further Inquires :</p>
+
+            <p class="helpline-number">+01 (123) 4567 90</p>
+          </div>
+
+        </a>
+
+        <a href="#" class="logo">
+          <H1>SELL YOUR HOBBY</H1>
+        </a>
+
         <div class="header-btn-group">
-          <button class="search-btn"><ion-icon name="search-outline"></ion-icon></button>
-          <button class="nav-open-btn"><ion-icon name="menu-outline"></ion-icon></button>
+
+          
+          <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
+            <ion-icon name="menu-outline"></ion-icon>
+          </button>
+
+          <a href="login.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; padding: 10px;">
+            <ion-icon name="person-circle-outline" style="font-size: 1.5em; margin-right: 8px;"></ion-icon>
+            Login
+          </a>
+
         </div>
+
       </div>
     </div>
+
     <div class="header-bottom">
       <div class="container">
-        <nav class="navbar">
+
+        <ul class="social-list">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+        <nav class="navbar" data-navbar>
+
           <div class="navbar-top">
-            <div class="logo"><img src="logo.svg" alt="Logo"></div>
-            <button class="nav-close-btn"><ion-icon name="close-outline"></ion-icon></button>
+
+            <a href="#" class="logo">
+              <img src="assets/images/logo-blue.svg"alt="Tourly logo">
+            </a>
+
+            <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
           </div>
+
           <ul class="navbar-list">
-            <li><a href="#" class="navbar-link">Home</a></li>
-            <li><a href="#" class="navbar-link">About</a></li>
-            <li><a href="#" class="navbar-link">Packages</a></li>
-            <li><a href="#" class="navbar-link">Gallery</a></li>
-            <li><a href="#" class="navbar-link">Contact</a></li>
+
+            <li>
+              <a href="#home" class="navbar-link" data-nav-link>home</a>
+            </li>
+
+           
+
+            <li>
+              <a href="#destination" class="navbar-link" data-nav-link>destination</a>
+            </li>
+
+            <li>
+              <a href="#package" class="navbar-link" data-nav-link>packages</a>
+            </li>
+
+            <li>
+              <a href="#gallery" class="navbar-link" data-nav-link>gallery</a>
+            </li>
+
+            <li>
+              <a href="#contact" class="navbar-link" data-nav-link>contact us</a>
+            </li>
+
           </ul>
+
         </nav>
+
+        <button class="btn btn-primary"><a href="#tour-search">Book Now</a></button>
+
+
+
       </div>
     </div>
+
   </header>
 
-  <div class="overlay"></div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <h1 class="hero-title">Explore The World</h1>
-      <p class="hero-text">Your adventure starts here</p>
-      <div class="btn-group">
-        <button class="btn btn-primary"><a href="#">Get Started</a></button>
-        <button class="btn btn-secondary"><a href="#">Learn More</a></button>
-      </div>
-    </div>
-  </section>
 
-  <!-- TOUR SEARCH -->
-  <section class="tour-search">
-    <div class="container">
-      <form class="tour-search-form">
-        <div class="input-wrapper">
-          <label class="input-label" for="destination">Destination</label>
-          <input type="text" class="input-field" id="destination" placeholder="Where to go?">
+
+
+
+
+  <main>
+  
+
+
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="hero" id="home">
+        <div class="container">
+
+          <h2 class="h1 hero-title">Hobbies Into Lasting Memories</h2>
+
+          <p class="hero-text">
+          Discover unique, budget-friendly activities offered by passionate local hobbyists in Germany.
+          Turn your travel into unforgettable experiences while supporting locals and their skills.
+          </p>
+
+          <div class="btn-group">
+            <button class="btn btn-primary">Learn more</button>
+
+            <button class="btn btn-secondary"><a href="#tour-search">Book now</a></button>
+          </div>
+
         </div>
-        <div class="input-wrapper">
-          <label class="input-label" for="date">Date</label>
-          <input type="date" class="input-field" id="date">
+      </section>
+
+
+
+
+
+      <!-- 
+        - #TOUR SEARCH
+      -->
+
+      <section class="tour-search" id="tour-search">
+        <div class="container">
+
+
+          <form class="tour-search-form" action="results.html" method="GET">
+          
+            <div class="input-wrapper">
+              <label for="destination" class="input-label">Search Hobby*</label>
+              <input type="text" name="destination" id="destination" required placeholder="Enter Destination" class="input-field">
+            </div>
+          
+            <div class="input-wrapper">
+              <label for="people" class="input-label">Pax Number*</label>
+              <input type="number" name="people" id="people" required placeholder="No.of People" class="input-field">
+            </div>
+          
+            <div class="input-wrapper">
+              <label for="checkin" class="input-label">Checkin Date*</label>
+              <input type="date" name="checkin" id="checkin" required class="input-field">
+            </div>
+          
+            <div class="input-wrapper">
+              <label for="checkout" class="input-label">Checkout Date*</label>
+              <input type="date" name="checkout" id="checkout" required class="input-field">
+            </div>
+          
+            <button type="submit" class="btn btn-secondary">Inquire now</button>
+          
+          </form>
+
+
         </div>
-        <div class="input-wrapper">
-          <label class="input-label" for="guests">Guests</label>
-          <input type="number" class="input-field" id="guests" placeholder="Number of guests">
+      </section>
+
+
+
+
+
+      <!-- 
+        - #POPULAR
+      -->
+
+      <section class="popular" id="destination">
+        <div class="container">
+
+          <p class="section-subtitle">Discover Moments</p>
+
+          <h2 class="h2 section-title">Top Experiences</h2>
+
+          <p class="section-text">
+            Discover the most loved activities offered by local hobbyists in Germany.
+            From creative workshops to adventure tours, enjoy unforgettable moments that connect you to authentic local culture.
+          </p>
+
+          <ul class="popular-list">
+
+            <li>
+              <div class="popular-card">
+
+                <figure class="card-img">
+                  <img src="horse.jpg" alt="San miguel, italy" loading="lazy">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+
+                  <p class="card-subtitle">
+                    <a href="#">Munich</a>
+                  </p>
+
+                  <h3 class="h3 card-title">
+                    <a href="#">Horse Racing</a>
+                  </h3>
+
+                  <p class="card-text">
+                    Feel the thrill of horse racing, Race into local horse-riding adventures.
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="popular-card">
+
+                <figure class="card-img">
+                  <img src="snow.jpg" alt="Burj khalifa, dubai" loading="lazy">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+
+                  <p class="card-subtitle">
+                    <a href="#">Bavaria</a>
+                  </p>
+
+                  <h3 class="h3 card-title">
+                    <a href="#">Snow Skiing</a>
+                  </h3>
+
+                  <p class="card-text">
+                    Glide through snowy mountain, Experience the rush of snow skiing.
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="popular-card">
+
+                <figure class="card-img">
+                  <img src="golf.jpg" alt="Kyoto temple, japan" loading="lazy">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+
+                  <p class="card-subtitle">
+                    <a href="#">Frankfurt</a>
+                  </p>
+
+                  <h3 class="h3 card-title">
+                    <a href="#">Golf</a>
+                  </h3>
+
+                  <p class="card-text">
+                  Master the art of golf, Enjoy serene golf experiences.
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+          <button class="btn btn-primary"><a href=more.html>More destintion</a></button>
+
         </div>
-        <button type="submit" class="btn btn-primary">Search</button>
-      </form>
-    </div>
-  </section>
+      </section>
 
-  <!-- POPULAR DESTINATIONS -->
-  <section class="popular">
-    <div class="container">
-      <p class="section-subtitle">Discover Moments</p>
-      <h2 class="section-title">Top Experiences</h2>
-      <p class="section-text">
-        Discover the most loved activities offered by local hobbyists in Germany.
-        From creative workshops to adventure tours, enjoy unforgettable moments that connect you to authentic local culture.
-      </p>
-      <ul class="popular-list">
-        <li>
-          <div class="popular-card">
-            <figure class="card-img">
-              <img src="horse.jpg" alt="Horse Racing" loading="lazy">
-            </figure>
-            <div class="card-content">
-              <div class="card-rating">
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
+
+
+
+
+      <!-- 
+        - #PACKAGE
+      -->
+
+      <section class="package" id="package">
+        <div class="container">
+
+          <p class="section-subtitle">Best Activity Packages</p>
+
+          <h2 class="h2 section-title">Explore Our Packages</h2>
+
+          <p class="section-text">
+            Choose from a variety of curated hobby packages designed to give tourists unique, budget-friendly experiences in
+            Germany.
+          </p>
+
+          <ul class="package-list">
+
+            <li>
+              <div class="package-card">
+
+                <figure class="card-banner">
+                  <img src="hiking.jpg" alt="Experience The Great Holiday On Beach" loading="lazy">
+                </figure>
+
+                <div class="card-content">
+
+                  <h3 class="h3 card-title">Experience The Ultimate Hiking Adventure</h3>
+
+                  <p class="card-text">
+                    Explore scenic trails, breathtaking landscapes, and nature’s hidden gems while enjoying an unforgettable outdoor
+                    journey!
+                  </p>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <div class="meta-box">
+                        <ion-icon name="time"></ion-icon>
+
+                        <p class="text">2hr/4hr</p>
+                      </div>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <div class="meta-box">
+                        <ion-icon name="people"></ion-icon>
+
+                        <p class="text">pax: 10</p>
+                      </div>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <div class="meta-box">
+                        <ion-icon name="location"></ion-icon>
+
+                        <p class="text">Bavarian Alps</p>
+                      </div>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+                <div class="card-price">
+
+                  <div class="wrapper">
+
+                    <p class="reviews">(25 reviews)</p>
+
+                    <div class="card-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                  </div>
+
+                  <p class="price">
+                    €100
+                    <span>/ per person</span>
+                  </p>
+
+                  <button class="btn btn-secondary">Book Now</button>
+
+                </div>
+
               </div>
-              <p class="card-subtitle"><a href="#">Munich</a></p>
-              <h3 class="card-title"><a href="#">Horse Racing</a></h3>
-              <p class="card-text">Feel the thrill of horse racing, Race into local horse-riding adventures.</p>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="popular-card">
-            <figure class="card-img">
-              <img src="snow.jpg" alt="Snow Skiing" loading="lazy">
-            </figure>
-            <div class="card-content">
-              <div class="card-rating">
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
+            </li>
+
+            <li>
+              <div class="package-card">
+
+                <figure class="card-banner">
+                  <img src="pottery.jpg" alt="Summer Holiday To The Oxolotan River" loading="lazy">
+                </figure>
+
+                <div class="card-content">
+
+                  <h3 class="h3 card-title">Experience The Art of Pottery Making</h3>
+
+                  <p class="card-text">
+                  Learn from local artisans, shape clay into beautiful creations, and enjoy a hands-on, creative journey of
+                  self-expression.
+                  </p>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <div class="meta-box">
+                        <ion-icon name="time"></ion-icon>
+
+                        <p class="text">1hr/3hr</p>
+                      </div>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <div class="meta-box">
+                        <ion-icon name="people"></ion-icon>
+
+                        <p class="text">pax: 20</p>
+                      </div>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <div class="meta-box">
+                        <ion-icon name="location"></ion-icon>
+
+                        <p class="text">Höhr-Grenzhausen</p>
+                      </div>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+                <div class="card-price">
+
+                  <div class="wrapper">
+
+                    <p class="reviews">(20 reviews)</p>
+
+                    <div class="card-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                  </div>
+
+                  <p class="price">
+                    €50
+                    <span>/ per person</span>
+                  </p>
+
+                  <button class="btn btn-secondary">Book Now</button>
+
+                </div>
+
               </div>
-              <p class="card-subtitle"><a href="#">Bavaria</a></p>
-              <h3 class="card-title"><a href="#">Snow Skiing</a></h3>
-              <p class="card-text">Glide through snowy mountain, Experience the rush of snow skiing.</p>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="popular-card">
-            <figure class="card-img">
-              <img src="golf.jpg" alt="Golf" loading="lazy">
-            </figure>
-            <div class="card-content">
-              <div class="card-rating">
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
+            </li>
+
+            <li>
+              <div class="package-card">
+
+                <figure class="card-banner">
+                  <img src="kayaking.jpg" alt="Santorini Island's Weekend Vacation" loading="lazy">
+                </figure>
+
+                <div class="card-content">
+
+                  <h3 class="h3 card-title">Experience The Thrill of Kayaking</h3>
+
+                  <p class="card-text">
+                  Paddle through serene rivers and stunning waterways, guided by local experts, for an exciting and refreshing outdoor
+                  adventure.
+                  </p>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <div class="meta-box">
+                        <ion-icon name="time"></ion-icon>
+
+                        <p class="text">2hr/3hr</p>
+                      </div>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <div class="meta-box">
+                        <ion-icon name="people"></ion-icon>
+
+                        <p class="text">pax: 15</p>
+                      </div>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <div class="meta-box">
+                        <ion-icon name="location"></ion-icon>
+
+                        <p class="text">Berlin</p>
+                      </div>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+                <div class="card-price">
+
+                  <div class="wrapper">
+
+                    <p class="reviews">(40 reviews)</p>
+
+                    <div class="card-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                  </div>
+
+                  <p class="price">
+                    €100
+                    <span>/ per person</span>
+                  </p>
+
+                  <button class="btn btn-secondary">Book Now</button>
+
+                </div>
+
               </div>
-              <p class="card-subtitle"><a href="#">Frankfurt</a></p>
-              <h3 class="card-title"><a href="#">Golf</a></h3>
-              <p class="card-text">Master the art of golf, Enjoy serene golf experiences.</p>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <button class="btn btn-primary"><a href="more.html">More Destinations</a></button>
-    </div>
-  </section>
+            </li>
 
-  <!-- POPULAR PACKAGES -->
-  <section class="popular">
-    <div class="container">
-      <h2 class="section-title">Popular Packages</h2>
-      <ul class="popular-list">
-        <li class="popular-card">
-          <div class="card-img"><img src="hiking.jpg" alt="Hiking"></div>
-          <div class="card-content">
-            <h3 class="card-title"><a href="#">Hiking Adventure</a></h3>
-            <p class="card-text">Explore scenic trails and breathtaking landscapes.</p>
-          </div>
-        </li>
-        <li class="popular-card">
-          <div class="card-img"><img src="pottery.jpg" alt="Pottery"></div>
-          <div class="card-content">
-            <h3 class="card-title"><a href="#">Pottery Class</a></h3>
-            <p class="card-text">Learn from local artisans and create your own pottery.</p>
-          </div>
-        </li>
-        <li class="popular-card">
-          <div class="card-img"><img src="kayaking.jpg" alt="Kayaking"></div>
-          <div class="card-content">
-            <h3 class="card-title"><a href="#">Kayaking</a></h3>
-            <p class="card-text">Paddle through rivers and enjoy stunning waterways.</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
+          </ul>
 
-  <!-- GALLERY -->
-  <section class="gallery">
-    <div class="container">
-      <h2 class="section-title">Gallery</h2>
-      <ul class="gallery-list">
-        <li class="gallery-item"><img src="gallery-1.jpg" alt="Gallery 1"></li>
-        <li class="gallery-item"><img src="gallery-2.jpg" alt="Gallery 2"></li>
-        <li class="gallery-item"><img src="gallery-3.jpg" alt="Gallery 3"></li>
-        <li class="gallery-item"><img src="gallery-4.jpg" alt="Gallery 4"></li>
-        <li class="gallery-item"><img src="gallery-5.jpg" alt="Gallery 5"></li>
-      </ul>
-    </div>
-  </section>
+          <button class="btn btn-primary">View All Packages</button>
 
-  <!-- CTA -->
-  <section class="cta">
-    <div class="container">
-      <div class="cta-content">
-        <h2 class="section-title">Ready for Your Next Adventure?</h2>
-        <p class="section-text">Join thousands of travelers and explore the world with us.</p>
-        <button class="btn btn-primary"><a href="#">Book Now</a></button>
-      </div>
-    </div>
-  </section>
+        </div>
+      </section>
 
-  <!-- FOOTER -->
+
+
+
+
+      <!-- 
+        - #GALLERY
+      -->
+
+      <section class="gallery" id="gallery">
+        <div class="container">
+
+          <p class="section-subtitle">Photo Gallery</p>
+
+          <h2 class="h2 section-title">Photo's From Travellers</h2>
+
+          <p class="section-text">
+            Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque laudantium.
+            Sit ornare
+            mollitia tenetur, aptent.
+          </p>
+
+          <ul class="gallery-list">
+
+            <li class="gallery-item">
+              <figure class="gallery-image">
+                <img src=gallery-1.jpg" alt="Gallery image">
+              </figure>
+            </li>
+
+            <li class="gallery-item">
+              <figure class="gallery-image">
+                <img src="gallery-2.jpg" alt="Gallery image">
+              </figure>
+            </li>
+
+            <li class="gallery-item">
+              <figure class="gallery-image">
+                <img src="gallery-3.jpg" alt="Gallery image">
+              </figure>
+            </li>
+
+            <li class="gallery-item">
+              <figure class="gallery-image">
+                <img src="gallery-4.jpg" alt="Gallery image">
+              </figure>
+            </li>
+
+            <li class="gallery-item">
+              <figure class="gallery-image">
+                <img src="gallery-5.jpg" alt="Gallery image">
+              </figure>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #CTA
+      -->
+
+      <section class="cta" id="contact">
+        <div class="container">
+
+          <div class="cta-content">
+            <p class="section-subtitle">Call To Action</p>
+
+            <h2 class="h2 section-title">Your Journey, Our Passion. Create Memories!
+
+            <p class="section-text">
+              Discover unique local experiences in Germany offered by passionate hobbyists.
+              From adventure to creativity, make every moment of your trip unforgettable and authentic.
+            </p>
+          </div>
+
+          <button class="btn btn-secondary">Contact Us !</button>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
   <footer class="footer">
+
     <div class="footer-top">
       <div class="container">
+
         <div class="footer-brand">
-          <img src="logo.svg" alt="Logo">
-          <h1>TravelSite</h1>
+
+          <a href="#" class="logo">
+            <h1>SELL YOUR HOBBY</h1>
+          </a>
+
+          <p class="footer-text">
+          Discover unique, budget-friendly activities offered by passionate local hobbyists in Germany. Turn your travel into
+          unforgettable experiences while supporting locals and their skills
+          </p>
+
         </div>
+
         <div class="footer-contact">
-          <h3 class="contact-title">Contact</h3>
-          <p class="contact-text">Reach us anytime</p>
-          <div class="contact-item">
-            <ion-icon name="call-outline"></ion-icon>
-            <a href="tel:+1234567890" class="contact-link">+123 456 7890</a>
-          </div>
-          <div class="contact-item">
-            <ion-icon name="mail-outline"></ion-icon>
-            <a href="mailto:info@travelsite.com" class="contact-link">info@travelsite.com</a>
-          </div>
+
+          <h4 class="contact-title">Contact Us</h4>
+
+          <p class="contact-text">
+            Feel free to contact and reach us !!
+          </p>
+
+          <ul>
+
+            <li class="contact-item">
+              <ion-icon name="call-outline"></ion-icon>
+
+              <a href="tel:+01123456790" class="contact-link">+01 (123) 4567 90</a>
+            </li>
+
+            <li class="contact-item">
+              <ion-icon name="mail-outline"></ion-icon>
+
+              <a href="mailto:info.tourly.com" class="contact-link">info.sell your hobby.com</a>
+            </li>
+
+            <li class="contact-item">
+              <ion-icon name="location-outline"></ion-icon>
+
+              <address>3146 munich, germany</address>
+            </li>
+
+          </ul>
+
         </div>
+
+        <div class="footer-form">
+
+          <p class="form-text">
+            Subscribe our newsletter for more update & news !!
+          </p>
+
+          <form action="" class="form-wrapper">
+            <input type="email" name="email" class="input-field" placeholder="Enter Your Email" required>
+
+            <button type="submit" class="btn btn-secondary">Subscribe</button>
+          </form>
+
+        </div>
+
       </div>
     </div>
+
     <div class="footer-bottom">
-      <p class="copyright">© 2025 TravelSite. All rights reserved.</p>
+      <div class="container">
+
+        <p class="copyright">
+          &copy; 2025 <a href="">codewithrinta</a>. All rights reserved
+        </p>
+
+        <ul class="footer-bottom-list">
+
+          <li>
+            <a href="#" class="footer-bottom-link">Privacy Policy</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-bottom-link">Term & Condition</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-bottom-link">FAQ</a>
+          </li>
+
+        </ul>
+
+      </div>
     </div>
+
   </footer>
 
-  <!-- GO TO TOP -->
-  <button class="go-top"><ion-icon name="arrow-up-outline"></ion-icon></button>
 
-  <script>
-    const navOpenBtn = document.querySelector(".nav-open-btn");
-    const navCloseBtn = document.querySelector(".nav-close-btn");
-    const navbar = document.querySelector(".navbar");
-    const overlay = document.querySelector(".overlay");
-    navOpenBtn.addEventListener("click", () => {
-      navbar.classList.add("active");
-      overlay.classList.add("active");
-    });
-    navCloseBtn.addEventListener("click", () => {
-      navbar.classList.remove("active");
-      overlay.classList.remove("active");
-    });
-    overlay.addEventListener("click", () => {
-      navbar.classList.remove("active");
-      overlay.classList.remove("active");
-    });
-    const goTopBtn = document.querySelector(".go-top");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) goTopBtn.classList.add("active");
-      else goTopBtn.classList.remove("active");
-    });
-    goTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  </script>
+
+
+
+  <!-- 
+    - #GO TO TOP
+  -->
+
+  <a href="#top" class="go-top" data-go-top>
+    <ion-icon name="chevron-up-outline"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const loginLink = document.querySelector('.header-btn-group a.btn.btn-secondary');
+
+    const profileImg = document.createElement('img');
+    profileImg.style.width = '40px';
+    profileImg.style.height = '40px';
+    profileImg.style.borderRadius = '50%';
+    profileImg.style.marginRight = '10px';
+
+    const logoutBtn = document.createElement('button');
+    logoutBtn.textContent = 'Logout';
+    logoutBtn.style.marginLeft = '10px';
+    logoutBtn.classList.add('btn', 'btn-primary');
+    logoutBtn.style.padding = '8px';
+    logoutBtn.style.fontSize = '0.9em';
+    logoutBtn.style.cursor = 'pointer';
+    logoutBtn.style.border = 'none';
+    logoutBtn.style.borderRadius = '8px';
+
+    const profilePic = localStorage.getItem('userProfilePic');
+
+    if (profilePic) {
+      loginLink.innerHTML = '';
+      profileImg.src = profilePic;
+      loginLink.appendChild(profileImg);
+
+      loginLink.href = '#';
+
+      loginLink.parentElement.appendChild(logoutBtn);
+
+      logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('userProfilePic');
+        location.reload();
+      });
+    }
+  });
+</script>
+
 
 </body>
+
 </html>
