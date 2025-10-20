@@ -96,103 +96,41 @@
 
 <body>
   <main>
+
     <h2>Create Your Account</h2>
 
+    <!-- Toggle Buttons -->
+    <div style="text-align:center; margin-bottom: 20px;">
+        <button id="normalBtn" style="padding:10px 20px; border:none; background:#007BFF; color:white; border-radius:6px; cursor:pointer;">Normal User</button>
+        <button id="hobbyistBtn" style="padding:10px 20px; border:none; background:#6c757d; color:white; border-radius:6px; cursor:pointer;">Hobbyist</button>
+    </div>
+
+    <!-- Normal User Signup Form -->
     <form id="signupForm">
-      <select id="userType" required>
-        <option value="">Select Account Type</option>
-        <option value="normal">Normal User</option>
-        <option value="hobbyist">Hobbyist (Sell Your Hobbies)</option>
-      </select>
-
-      <input type="email" id="signupEmail" placeholder="Your Email" required>
-      <input type="password" id="signupPassword" placeholder="Password" required>
-      <input type="file" id="profilePicInput" accept="image/*" required>
-
-      <!-- Hobbyist Only Fields -->
-      <div class="hobbyist-fields" id="hobbyistFields">
-        <input type="text" id="hobbyName" placeholder="Hobby Name">
-        <input type="number" id="hobbyPrice" placeholder="Hobby Price (₹)">
-        <input type="text" id="hobbyRegion" placeholder="Region / Location">
-      </div>
-
-<select id="userType" required>
-  <option value="">Select Account Type</option>
-  <option value="normal">Normal User</option>
-  <option value="hobbyist">Hobbyist</option>
-</select>
-
-<div id="hobbyistFields" style="display: none;">
-  <input type="text" id="hobbyName" placeholder="Enter Your Hobby">
-  <input type="number" id="hobbyPrice" placeholder="Price for Your Hobby">
-  <input type="text" id="hobbyRegion" placeholder="Your Region">
-</div>
-
-
-
-
-
-      
-
-      <button type="submit">Sign Up</button>
-      <p>Already have an account? <a href="login.html">Login here</a></p>
+        <input type="email" id="signupEmail" placeholder="Your Email" required>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+        <input type="file" id="profilePicInput" accept="image/*" required>
+        <button type="submit">Sign Up</button>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
     </form>
-  </main>
 
-<script>
-  document.getElementById('signupForm').addEventListener('submit', (e) => {
-    e.preventDefault();
+    <!-- Hobbyist Signup Form (Email Submission) -->
+    <form id="hobbyForm" action="https://formsubmit.co/rintamaria16@gmail.com" method="POST" style="display:none;">
+        <input type="hidden" name="_subject" value="New Hobbyist Submission!">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="thankyou.html">
 
-    const email = document.getElementById('signupEmail').value;
-    const password = document.getElementById('signupPassword').value;
-    const file = document.getElementById('profilePicInput').files[0];
-    const userType = document.getElementById('userType').value; // new field for type
+        <input type="email" name="Email" placeholder="Your Email" required>
+        <input type="password" name="Password" placeholder="Password" required>
+        <input type="text" name="Hobby Name" placeholder="Your Hobby Name" required>
+        <input type="text" name="Price" placeholder="Price (₹)" required>
+        <input type="text" name="Region" placeholder="Region / Location" required>
 
-    let hobby = "", price = "", region = "";
+        <button type="submit">Submit for Verification</button>
+    </form>
+</main>
 
-    // If hobbyist, collect extra info
-    if (userType === "hobbyist") {
-      hobby = document.getElementById('hobbyName').value;
-      price = document.getElementById('hobbyPrice').value;
-      region = document.getElementById('hobbyRegion').value;
-    }
-
-    const reader = new FileReader();
-    reader.onload = function () {
-      // Store common data
-      localStorage.setItem('userEmail', email);
-      localStorage.setItem('signupPassword', password);
-      localStorage.setItem('userProfilePic', reader.result);
-      localStorage.setItem('userType', userType);
-
-      // Store hobbyist data
-      if (userType === "hobbyist") {
-        localStorage.setItem('userHobby', hobby);
-        localStorage.setItem('userPrice', price);
-        localStorage.setItem('userRegion', region);
-      }
-
-      alert('Signup successful!');
-
-      // Redirect based on type
-      if (userType === "hobbyist") {
-        location.href = 'dashboard.html';
-      } else {
-        location.href = 'index.html';
-      }
-    };
-    reader.readAsDataURL(file);
-  });
-
- document.getElementById('userType').addEventListener('change', function () {
-    document.getElementById('hobbyistFields').style.display =
-      this.value === 'hobbyist' ? 'block' : 'none';
-  });
-
-
-
-  
-</script>
 
 
 
