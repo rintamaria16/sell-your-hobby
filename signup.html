@@ -31,9 +31,7 @@
       margin-bottom: 20px;
     }
 
-    input[type="email"],
-    input[type="password"],
-    input[type="file"],
+    input,
     select {
       width: 100%;
       padding: 12px;
@@ -75,6 +73,24 @@
     a:hover {
       text-decoration: underline;
     }
+
+    /* Hidden by default */
+    .hobbyist-fields {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 
@@ -90,18 +106,41 @@
       </select>
 
       <input type="email" id="signupEmail" placeholder="Your Email" required>
-
       <input type="password" id="signupPassword" placeholder="Password" required>
-
       <input type="file" id="profilePicInput" accept="image/*" required>
 
-      <button type="submit">Sign Up</button>
+      <!-- Hobbyist Only Fields -->
+      <div class="hobbyist-fields" id="hobbyistFields">
+        <input type="text" id="hobbyName" placeholder="Hobby Name">
+        <input type="number" id="hobbyPrice" placeholder="Hobby Price (₹)">
+        <input type="text" id="hobbyRegion" placeholder="Region / Location">
+      </div>
 
+      <button type="submit">Sign Up</button>
       <p>Already have an account? <a href="login.html">Login here</a></p>
     </form>
   </main>
 
   <script>
+    const userTypeSelect = document.getElementById('userType');
+    const hobbyistFields = document.getElementById('hobbyistFields');
+
+    userTypeSelect.addEventListener('change', () => {
+      if (userTypeSelect.value === 'hobbyist') {
+        hobbyistFields.style.display = 'block';
+        // make required for hobbyist
+        document.getElementById('hobbyName').required = true;
+        document.getElementById('hobbyPrice').required = true;
+        document.getElementById('hobbyRegion').required = true;
+      } else {
+        hobbyistFields.style.display = 'none';
+        // remove required when normal user
+        document.getElementById('hobbyName').required = false;
+        document.getElementById('hobbyPrice').required = false;
+        document.getElementById('hobbyRegion').required = false;
+      }
+    });
+
     document.getElementById('signupForm').addEventListener('submit', (e) => {
       e.preventDefault();
 
@@ -110,16 +149,25 @@
       const file = document.getElementById('profilePicInput').files[0];
       const userType = document.getElementById('userType').value;
 
-      if (!userType) {
-        alert("Please select your account type.");
-        return;
-      }
-
       const reader = new FileReader();
       reader.onload = function () {
+        // Save base info
         localStorage.setItem('userEmail', email);
         localStorage.setItem('userProfilePic', reader.result);
         localStorage.setItem('userType', userType);
+
+        if (userType === 'hobbyist') {
+          const hobbyName = document.getElementById('hobbyName').value;
+          const hobbyPrice = document.getElementById('hobbyPrice').value;
+          const hobbyRegion = document.getElementById('hobbyRegion').value;
+
+          const hobbyData = {
+            hobbyName,
+            hobbyPrice,
+            hobbyRegion
+          };
+          localStorage.setItem('hobbyistData', JSON.stringify(hobbyData));
+        }
 
         alert('Signup successful!');
 
