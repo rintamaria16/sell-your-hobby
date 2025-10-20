@@ -1309,40 +1309,7 @@ address {
 
 
 .header_more {
-  background-image: url("../images/hero-banner.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-color: hsla(0, 0%, 0%, 0.7);
-  background-blend-mode: overlay;
-  display: grid;
-  min-height: 160px;
-  padding-top: 70px;
-}
-
-
-/*-----------------------------------*\
- * #HERO FIX FOR BACKGROUND IMAGE
-\*-----------------------------------*/
-
-.hero {
-  /* Fixed path for hero background */
-  background-image: url("images/hero-banner.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-color: hsla(0, 0%, 0%, 0.7);
-  background-blend-mode: overlay;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  min-height: 600px;
-  padding-top: 125px;
-}
-
-.header_more {
-  /* Fixed path for header_more background */
-  background-image: url("images/hero-banner.jpg");
+  background-image: url("hero-banner.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
