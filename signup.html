@@ -2,120 +2,136 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup - Sell Your Hobby</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup - Sell Your Hobby</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f4f8;
-            margin: 0;
-            padding: 0;
-        }
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+    }
 
-        main {
-            max-width: 400px;
-            margin: 80px auto;
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-        }
+    main {
+      max-width: 420px;
+      margin: 80px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
 
-        h2 {
-            text-align: center;
-            font-weight: 700;
-            color: #007BFF;
-            margin-bottom: 20px;
-        }
+    h2 {
+      text-align: center;
+      font-weight: 700;
+      color: #007BFF;
+      margin-bottom: 20px;
+    }
 
-        input[type="email"],
-        input[type="password"],
-        input[type="file"] {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            font-size: 1em;
-        }
+    input[type="email"],
+    input[type="password"],
+    input[type="file"],
+    select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 1em;
+    }
 
-        button {
-            width: 100%;
-            padding: 14px;
-            font-weight: 600;
-            font-size: 1.1em;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+    button {
+      width: 100%;
+      padding: 14px;
+      font-weight: 600;
+      font-size: 1.1em;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-        button:hover {
-            background-color: #0056b3;
-        }
+    button:hover {
+      background-color: #0056b3;
+    }
 
-        p {
-            text-align: center;
-            color: #555;
-            margin-top: 15px;
-        }
+    p {
+      text-align: center;
+      color: #555;
+      margin-top: 15px;
+    }
 
-        a {
-            color: #007BFF;
-            text-decoration: none;
-            font-weight: 500;
-        }
+    a {
+      color: #007BFF;
+      text-decoration: none;
+      font-weight: 500;
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
 <body>
+  <main>
+    <h2>Create Your Account</h2>
 
-    <main>
-        <h2>Create Your Account</h2>
+    <form id="signupForm">
+      <select id="userType" required>
+        <option value="">Select Account Type</option>
+        <option value="normal">Normal User</option>
+        <option value="hobbyist">Hobbyist (Sell Your Hobbies)</option>
+      </select>
 
-        <form id="signupForm">
+      <input type="email" id="signupEmail" placeholder="Your Email" required>
 
-            <input type="email" id="signupEmail" placeholder="Your Email" required>
+      <input type="password" id="signupPassword" placeholder="Password" required>
 
-            <input type="password" id="signupPassword" placeholder="Password" required>
+      <input type="file" id="profilePicInput" accept="image/*" required>
 
-            <input type="file" id="profilePicInput" accept="image/*" required>
+      <button type="submit">Sign Up</button>
 
-            <button type="submit">Sign Up</button>
+      <p>Already have an account? <a href="login.html">Login here</a></p>
+    </form>
+  </main>
 
-            <p>Already have an account? <a href="login.html">Login here</a></p>
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', (e) => {
+      e.preventDefault();
 
-        </form>
-    </main>
+      const email = document.getElementById('signupEmail').value;
+      const password = document.getElementById('signupPassword').value;
+      const file = document.getElementById('profilePicInput').files[0];
+      const userType = document.getElementById('userType').value;
 
-    <script>
-        document.getElementById('signupForm').addEventListener('submit', (e) => {
-            e.preventDefault();
+      if (!userType) {
+        alert("Please select your account type.");
+        return;
+      }
 
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-            const file = document.getElementById('profilePicInput').files[0];
+      const reader = new FileReader();
+      reader.onload = function () {
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userProfilePic', reader.result);
+        localStorage.setItem('userType', userType);
 
-            const reader = new FileReader();
-            reader.onload = function () {
-                localStorage.setItem('userEmail', email);
-                localStorage.setItem('userProfilePic', reader.result);
-                alert('Signup successful! You are now logged in.');
-                location.href = 'index.html';
-            };
-            reader.readAsDataURL(file);
-        });
-    </script>
+        alert('Signup successful!');
 
+        if (userType === 'hobbyist') {
+          location.href = 'hobbyist-dashboard.html';
+        } else {
+          location.href = 'index.html';
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+  </script>
 </body>
 
 </html>
