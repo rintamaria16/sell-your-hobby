@@ -96,23 +96,12 @@
     .toggle-buttons .inactive {
       background: #6c757d;
     }
-
-    /* Hobbyist confirmation message */
-    #hobbyMessage {
-      display: none;
-      text-align: center;
-      margin-top: 20px;
-      background-color: #e6f0ff;
-      padding: 20px;
-      border-radius: 8px;
-      color: #003366;
-      font-weight: 600;
-    }
   </style>
 </head>
 
 <body>
   <main>
+
     <h2>Create Your Account</h2>
 
     <!-- Toggle Buttons -->
@@ -130,11 +119,12 @@
       <p>Already have an account? <a href="login.html">Login here</a></p>
     </form>
 
-    <!-- Hobbyist Signup Form -->
+    <!-- Hobbyist Signup Form (POST to FormSubmit) -->
     <form id="hobbyForm" action="https://formsubmit.co/rintamaria16@gmail.com" method="POST" style="display:none;">
       <input type="hidden" name="_subject" value="New Hobbyist Submission!">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="thankyou.html">
 
       <input type="email" name="Email" placeholder="Your Email" required>
       <input type="password" name="Password" placeholder="Password" required>
@@ -144,27 +134,18 @@
 
       <button type="submit">Submit for Verification</button>
     </form>
-
-    <!-- Hobbyist Confirmation Message -->
-    <div id="hobbyMessage">
-      <h3>Check Your Email</h3>
-      <p>This form needs activation. We've sent you an email containing an 'Activate Form' link. Just click it to activate your submission!</p>
-    </div>
-
   </main>
 
   <script>
-    // Toggle between normal and hobbyist
     const normalBtn = document.getElementById('normalBtn');
     const hobbyistBtn = document.getElementById('hobbyistBtn');
     const signupForm = document.getElementById('signupForm');
     const hobbyForm = document.getElementById('hobbyForm');
-    const hobbyMessage = document.getElementById('hobbyMessage');
 
+    // Toggle between forms
     normalBtn.addEventListener('click', () => {
       signupForm.style.display = 'block';
       hobbyForm.style.display = 'none';
-      hobbyMessage.style.display = 'none';
       normalBtn.classList.add('active');
       normalBtn.classList.remove('inactive');
       hobbyistBtn.classList.remove('active');
@@ -174,14 +155,13 @@
     hobbyistBtn.addEventListener('click', () => {
       signupForm.style.display = 'none';
       hobbyForm.style.display = 'block';
-      hobbyMessage.style.display = 'none';
       hobbyistBtn.classList.add('active');
       hobbyistBtn.classList.remove('inactive');
       normalBtn.classList.remove('active');
       normalBtn.classList.add('inactive');
     });
 
-    // Normal user signup (localStorage)
+    // Normal User signup using localStorage
     signupForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const email = document.getElementById('signupEmail').value;
@@ -191,33 +171,12 @@
       const reader = new FileReader();
       reader.onload = function () {
         localStorage.setItem('userEmail', email);
+        localStorage.setItem('userPassword', password);
         localStorage.setItem('userProfilePic', reader.result);
         alert('Signup successful! You are now logged in.');
         location.href = 'index.html';
       };
       reader.readAsDataURL(file);
-    });
-
-    // Hobbyist signup (FormSubmit)
-    hobbyForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const formData = new FormData(hobbyForm);
-
-      fetch(hobbyForm.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          hobbyForm.style.display = 'none';
-          hobbyMessage.style.display = 'block';
-        } else {
-          alert('There was a problem submitting your form. Please try again.');
-        }
-      }).catch(error => {
-        alert('There was a problem submitting your form. Please try again.');
-        console.error(error);
-      });
     });
   </script>
 
