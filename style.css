@@ -1319,3 +1319,55 @@ address {
   min-height: 160px;
   padding-top: 70px;
 }
+
+
+
+
+
+
+.header-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px; /* optional spacing */
+  padding: 10px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .header-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header-top .logo,
+  .header-top .helpline-box,
+  .header-top .header-btn-group {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .header-btn-group a.btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+.header-top .logo {
+  flex: 1 1 auto; /* take available space */
+  text-align: center; /* center on mobile */
+}
+
+.header-top .helpline-box {
+  flex: 1 1 auto;
+  text-align: left;
+}
+
+.header-top .header-btn-group {
+  display: flex;
+  gap: 10px;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+}
+
