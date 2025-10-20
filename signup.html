@@ -74,22 +74,27 @@
       text-decoration: underline;
     }
 
-    /* Hidden by default */
-    .hobbyist-fields {
-      display: none;
-      animation: fadeIn 0.3s ease-in-out;
+    .toggle-buttons {
+      text-align: center;
+      margin-bottom: 20px;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
+    .toggle-buttons button {
+      padding: 10px 20px;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 5px;
+      transition: 0.3s;
+    }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .toggle-buttons .active {
+      background: #007BFF;
+    }
+
+    .toggle-buttons .inactive {
+      background: #6c757d;
     }
   </style>
 </head>
@@ -100,42 +105,78 @@
     <h2>Create Your Account</h2>
 
     <!-- Toggle Buttons -->
-    <div style="text-align:center; margin-bottom: 20px;">
-        <button id="normalBtn" style="padding:10px 20px; border:none; background:#007BFF; color:white; border-radius:6px; cursor:pointer;">Normal User</button>
-        <button id="hobbyistBtn" style="padding:10px 20px; border:none; background:#6c757d; color:white; border-radius:6px; cursor:pointer;">Hobbyist</button>
+    <div class="toggle-buttons">
+      <button id="normalBtn" class="active">Normal User</button>
+      <button id="hobbyistBtn" class="inactive">Hobbyist</button>
     </div>
 
     <!-- Normal User Signup Form -->
     <form id="signupForm">
-        <input type="email" id="signupEmail" placeholder="Your Email" required>
-        <input type="password" id="signupPassword" placeholder="Password" required>
-        <input type="file" id="profilePicInput" accept="image/*" required>
-        <button type="submit">Sign Up</button>
-        <p>Already have an account? <a href="login.html">Login here</a></p>
+      <input type="email" id="signupEmail" placeholder="Your Email" required>
+      <input type="password" id="signupPassword" placeholder="Password" required>
+      <input type="file" id="profilePicInput" accept="image/*" required>
+      <button type="submit">Sign Up</button>
+      <p>Already have an account? <a href="login.html">Login here</a></p>
     </form>
 
     <!-- Hobbyist Signup Form (Email Submission) -->
     <form id="hobbyForm" action="https://formsubmit.co/rintamaria16@gmail.com" method="POST" style="display:none;">
-        <input type="hidden" name="_subject" value="New Hobbyist Submission!">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="thankyou.html">
+      <input type="hidden" name="_subject" value="New Hobbyist Submission!">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="thankyou.html">
 
-        <input type="email" name="Email" placeholder="Your Email" required>
-        <input type="password" name="Password" placeholder="Password" required>
-        <input type="text" name="Hobby Name" placeholder="Your Hobby Name" required>
-        <input type="text" name="Price" placeholder="Price (₹)" required>
-        <input type="text" name="Region" placeholder="Region / Location" required>
+      <input type="email" name="Email" placeholder="Your Email" required>
+      <input type="password" name="Password" placeholder="Password" required>
+      <input type="text" name="Hobby Name" placeholder="Your Hobby Name" required>
+      <input type="text" name="Price" placeholder="Price (₹)" required>
+      <input type="text" name="Region" placeholder="Region / Location" required>
 
-        <button type="submit">Submit for Verification</button>
+      <button type="submit">Submit for Verification</button>
     </form>
-</main>
+  </main>
 
+  <script>
+    const normalBtn = document.getElementById('normalBtn');
+    const hobbyistBtn = document.getElementById('hobbyistBtn');
+    const signupForm = document.getElementById('signupForm');
+    const hobbyForm = document.getElementById('hobbyForm');
 
+    normalBtn.addEventListener('click', () => {
+      signupForm.style.display = 'block';
+      hobbyForm.style.display = 'none';
+      normalBtn.classList.add('active');
+      normalBtn.classList.remove('inactive');
+      hobbyistBtn.classList.remove('active');
+      hobbyistBtn.classList.add('inactive');
+    });
 
+    hobbyistBtn.addEventListener('click', () => {
+      signupForm.style.display = 'none';
+      hobbyForm.style.display = 'block';
+      hobbyistBtn.classList.add('active');
+      hobbyistBtn.classList.remove('inactive');
+      normalBtn.classList.remove('active');
+      normalBtn.classList.add('inactive');
+    });
 
+    // Local signup (normal user)
+    document.getElementById('signupForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('signupEmail').value;
+      const password = document.getElementById('signupPassword').value;
+      const file = document.getElementById('profilePicInput').files[0];
 
-  
+      const reader = new FileReader();
+      reader.onload = function () {
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userProfilePic', reader.result);
+        alert('Signup successful! You are now logged in.');
+        location.href = 'index.html';
+      };
+      reader.readAsDataURL(file);
+    });
+  </script>
+
 </body>
-
 </html>
