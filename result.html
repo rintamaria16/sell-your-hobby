@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Results</title>
+
+</head>
+
+
+<!-- 
+    - favicon
+  -->
+<link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+<!-- 
+    - custom css link
+  -->
+<link rel="stylesheet" href="./assets/css/style.css">
+
+<!-- 
+    - google font link
+  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body id="top">
+
+    <!-- 
+    - #HEADER
+  -->
+
+    <header class="header_more" data-header>
+
+        <div class="overlay" data-overlay></div>
+
+        <div class="header-top">
+            <div class="container">
+
+                <a href="tel:+01123456790" class="helpline-box">
+
+                    <div class="icon-box">
+                        <ion-icon name="call-outline"></ion-icon>
+                    </div>
+
+                    <div class="wrapper">
+                        <p class="helpline-title">For Further Inquires :</p>
+
+                        <p class="helpline-number">+01 (123) 4567 90</p>
+                    </div>
+
+                </a>
+
+                <a href="#" class="logo">
+                    <H1>SELL YOUR HOBBY</H1>
+                </a>
+
+                <div class="header-btn-group">
+
+
+                    <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
+                        <ion-icon name="menu-outline"></ion-icon>
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="header-bottom">
+            <div class="container">
+
+                <ul class="social-list">
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-youtube"></ion-icon>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <nav class="navbar" data-navbar>
+
+                    <div class="navbar-top">
+
+                        <a href="#" class="logo">
+                            <img src="assets/images/logo-blue.svg" alt="Tourly logo">
+                        </a>
+
+                        <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn>
+                            <ion-icon name="close-outline"></ion-icon>
+                        </button>
+
+                    </div>
+
+                    <ul class="navbar-list">
+
+                        <li>
+                            <a href="index.html" class="navbar-link" data-nav-link>home</a>
+                        </li>
+
+
+
+                        <li>
+                            <a href="#destination" class="navbar-link" data-nav-link>destination</a>
+                        </li>
+
+                        <li>
+                            <a href="#package" class="navbar-link" data-nav-link>packages</a>
+                        </li>
+
+                        <li>
+                            <a href="#gallery" class="navbar-link" data-nav-link>gallery</a>
+                        </li>
+
+                        <li>
+                            <a href="#contact" class="navbar-link" data-nav-link>contact us</a>
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+                <button class="btn btn-primary">Book Now</button>
+
+            </div>
+        </div>
+
+    </header>
+
+
+    <body>
+    
+        <h1>Tour Search Results</h1>
+        <div class="results"></div>
+    
+        <script>
+            // 1️⃣ Sample tour data with image and trainer
+            const tours = [
+                { destination: "Bavarian Alps", activities: ["Hiking"], pricePerPerson: 50, image: "hiking.jpg", trainer: "John Smith" },
+                 { destination: "Black Forest", activities: ["Hiking"], pricePerPerson: 35, image: "hiking2.jpg", trainer: "Michael Brown" },
+                { destination: "Bavaria", activities: ["skiing"], pricePerPerson: 50, image: "snow.jpg", trainer: "John Smith" },
+                { destination: " Garmisch-Partenkirchen", activities: ["skiing"], pricePerPerson: 30, image: "snow1.jpg", trainer: "mathew john" },
+                { destination: "Frankfurt", activities: ["golf"], pricePerPerson: 40, image: "golf.jpg", trainer: "Emily Clark" },
+                 { destination: "munich", activities: ["golf"], pricePerPerson: 60, image: "golf1.avif", trainer: "sweeta bia" },
+                 { destination: "munich", activities: ["horse racing"], pricePerPerson: 100, image: "horse.jpg", trainer: "sweeta bia" },
+                 { destination: " Hamburg", activities: ["horse racing"], pricePerPerson: 80, image: "horse1.jpg", trainer: "sweeta bia" },
+                { destination: "Höhr-Grenzhausen", activities: ["pottery"], pricePerPerson: 30, image: "pottery.jpg", trainer: "Emily Clark" },
+                 { destination: "Meissen", activities: ["pottery"], pricePerPerson: 30, image: "pottery1.jpg", trainer: "Emily Clark" },
+                { destination: "Mecklenburg Lake District", activities: ["Kayaking"], pricePerPerson: 30, image: "kayaking.jpg", trainer: "Laura Wilson" },
+                 { destination: "River Rhine", activities: ["Kayaking"], pricePerPerson: 50, image: "kayaking1.jpg", trainer: "Laura Wilson" },
+                 { destination: "Black Forest", activities: ["paragliding"], pricePerPerson: 50, image: "paragliding.jpg", trainer: "Laura Wilson" },
+                 { destination: " Bavarian Alps", activities: ["paragliding"], pricePerPerson: 50, image: "paragliding1.jpg", trainer: "Laura Wilson" }, 
+                 { destination: "Sylt Island", activities: ["surfing"], pricePerPerson: 150, image: "surfing.jpeg", trainer: "Laura Wilson" },
+                { destination: "Norderney Island", activities: ["surfing"], pricePerPerson: 120, image: "surfing1.jpg", trainer: "Laura Wilson" },
+                 { destination: "Baltic Sea ", activities: ["fishing"], pricePerPerson: 50, image: "fishing.png", trainer: "Laura Wilson" },
+                { destination: "River Rhine", activities: ["fishing"], pricePerPerson: 30, image: "fishing1.webp", trainer: "Laura Wilson" }
+            ];
+
+            // 2️⃣ Get query parameters from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const destinationInput = urlParams.get('destination') || '';
+            const people = parseInt(urlParams.get('people')) || 1;
+            const checkin = urlParams.get('checkin') || '';
+            const checkout = urlParams.get('checkout') || '';
+
+            // 3️⃣ Filter tours
+                const results = tours.filter(tour =>
+                    tour.destination.toLowerCase().includes(destinationInput.toLowerCase()) ||
+                    tour.activities.some(activity => activity.toLowerCase().includes(destinationInput.toLowerCase()))
+                );
+
+
+            // 4️⃣ Display results
+            const resultsDiv = document.querySelector('.results');
+
+            if (results.length === 0) {
+                resultsDiv.innerHTML = "<p>No tours found for this destination.</p>";
+            } else {
+               
+
+                results.forEach(tour => {
+                    const totalPrice = tour.pricePerPerson * people;
+
+                    // Example trainer photo
+                    const trainerImage = "assets/images/hikingp1.jpg";
+
+                    // Display the searched term (destinationInput) as heading if provided, fallback to tour destination
+                    const heading = destinationInput ? destinationInput.charAt(0).toUpperCase() + destinationInput.slice(1) : tour.destination;
+
+                    resultsDiv.innerHTML += `
+      <div class="tour-result">
+        <div class="tour-image">
+          <img src="${tour.image}" alt="${tour.destination}">
+        </div>
+
+        <div class="tour-details">
+          <h3>${heading}</h3>
+          <p><strong>Destination:</strong> ${tour.destination}</p>
+          <p><strong>Check-in:</strong> ${checkin}</p>
+          <p><strong>Check-out:</strong> ${checkout}</p>
+          <p class="total-price"><strong>Total Price:</strong> €${totalPrice}</p>
+
+          <div class="trainer-info">
+            <img src="${trainerImage}" alt="${tour.trainer}">
+            <div>
+              <p><strong>Trainer:</strong> ${tour.trainer}</p>
+              <p>Experienced guide for your adventure</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+                });
+
+
+            }     
+        </script>
+    
+    </body>
+
+
+
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+    
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    
+    
+    .results {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .tour-result {
+        display: flex;
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        max-width: 800px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .tour-image {
+        flex: 1;
+        margin-right: 20px;
+    }
+
+    .tour-image img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .tour-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .tour-details h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .tour-details p {
+        margin: 5px 0;
+    }
+
+    .trainer-info {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .trainer-info img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+
+    .total-price {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-top: 10px;
+    }
+</style>
+
+    </style>
+
+
+
+    <!-- 
+        - #FOOTER
+      -->
+    
+    <footer class="footer">
+    
+        <div class="footer-top">
+            <div class="container">
+    
+                <div class="footer-brand">
+    
+                    <a href="#" class="logo">
+                        <h1>SELL YOUR HOBBY</h1>
+                    </a>
+    
+                    <p class="footer-text">
+                        Urna ratione ante harum provident, eleifend, vulputate molestiae proin fringilla, praesentium magna
+                        conubia
+                        at
+                        perferendis, pretium, aenean aut ultrices.
+                    </p>
+    
+                </div>
+    
+                <div class="footer-contact">
+    
+                    <h4 class="contact-title">Contact Us</h4>
+    
+                    <p class="contact-text">
+                        Feel free to contact and reach us !!
+                    </p>
+    
+                    <ul>
+    
+                        <li class="contact-item">
+                            <ion-icon name="call-outline"></ion-icon>
+    
+                            <a href="tel:+01123456790" class="contact-link">+01 (123) 4567 90</a>
+                        </li>
+    
+                        <li class="contact-item">
+                            <ion-icon name="mail-outline"></ion-icon>
+    
+                            <a href="mailto:info.tourly.com" class="contact-link">info.tourly.com</a>
+                        </li>
+    
+                        <li class="contact-item">
+                            <ion-icon name="location-outline"></ion-icon>
+    
+                            <address>3146 Koontz, California</address>
+                        </li>
+    
+                    </ul>
+    
+                </div>
+    
+                <div class="footer-form">
+    
+                    <p class="form-text">
+                        Subscribe our newsletter for more update & news !!
+                    </p>
+    
+                    <form action="" class="form-wrapper">
+                        <input type="email" name="email" class="input-field" placeholder="Enter Your Email" required>
+    
+                        <button type="submit" class="btn btn-secondary">Subscribe</button>
+                    </form>
+    
+                </div>
+    
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <div class="container">
+    
+                <p class="copyright">
+                    &copy; 2022 <a href="">codewithsadee</a>. All rights reserved
+                </p>
+    
+                <ul class="footer-bottom-list">
+    
+                    <li>
+                        <a href="#" class="footer-bottom-link">Privacy Policy</a>
+                    </li>
+    
+                    <li>
+                        <a href="#" class="footer-bottom-link">Term & Condition</a>
+                    </li>
+    
+                    <li>
+                        <a href="#" class="footer-bottom-link">FAQ</a>
+                    </li>
+    
+                </ul>
+    
+            </div>
+        </div>
+    
+    </footer>
+
+
+
+    <!-- 
+        - custom js link
+      -->
+    <script src="./assets/js/script.js"></script>
+    
+    <!-- 
+        - ionicon link
+      -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+</html>
+
+
