@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hobbyist Dashboard - Sell Your Hobby</title>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f7fb;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #007BFF;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 1.5em;
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #007BFF;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #333;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .details {
+      text-align: left;
+      margin-top: 20px;
+      font-size: 1.1em;
+      color: #444;
+    }
+
+    .details p {
+      margin: 8px 0;
+      padding: 10px;
+      background: #f7f9fc;
+      border-radius: 6px;
+    }
+
+    .logout-btn {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 25px;
+      transition: background-color 0.3s ease;
+    }
+
+    .logout-btn:hover {
+      background-color: #b02a37;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>🎨 Hobbyist Dashboard</header>
+
+  <main>
+    <img id="profilePic" class="profile-pic" src="" alt="Profile Picture">
+    <h2 id="userName">Hobbyist</h2>
+
+    <div class="details">
+      <p><strong>Email:</strong> <span id="userEmail"></span></p>
+      <p><strong>Hobby:</strong> <span id="userHobby"></span></p>
+      <p><strong>Price:</strong> ₹<span id="userPrice"></span></p>
+      <p><strong>Region:</strong> <span id="userRegion"></span></p>
+    </div>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </main>
+
+  <script>
+    // Fetch data from localStorage
+    const email = localStorage.getItem('userEmail');
+    const pic = localStorage.getItem('userProfilePic');
+    const hobby = localStorage.getItem('userHobby');
+    const price = localStorage.getItem('userPrice');
+    const region = localStorage.getItem('userRegion');
+
+    if (!email) {
+      alert("No user logged in!");
+      location.href = "login.html";
+    } else {
+      document.getElementById('userEmail').textContent = email;
+      document.getElementById('profilePic').src = pic || "https://via.placeholder.com/120";
+      document.getElementById('userHobby').textContent = hobby || "Not provided";
+      document.getElementById('userPrice').textContent = price || "Not set";
+      document.getElementById('userRegion').textContent = region || "Not provided";
+    }
+
+    function logout() {
+      localStorage.removeItem('userEmail');
+      localStorage.removeItem('userProfilePic');
+      localStorage.removeItem('userHobby');
+      localStorage.removeItem('userPrice');
+      localStorage.removeItem('userRegion');
+      localStorage.removeItem('userType');
+      alert("Logged out successfully!");
+      location.href = "login.html";
+    }
+  </script>
+
+</body>
+
+</html>
