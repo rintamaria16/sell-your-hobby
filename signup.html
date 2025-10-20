@@ -127,20 +127,22 @@
     </form>
 
     <!-- Hobbyist Signup Form (Email Submission) -->
-    <form id="hobbyForm" class="hidden-form" action="https://formsubmit.co/rintamaria16@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="New Hobbyist Submission!">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="thankyou.html">
+  <!-- Hobbyist Signup Form (Hidden initially) -->
+<form id="hobbyForm" action="https://formsubmit.co/rintamaria16@gmail.com" method="POST" style="display:none;">
+  <input type="hidden" name="_subject" value="New Hobbyist Submission!">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_next" value="thankyou.html">
 
-      <input type="email" name="Email" placeholder="Your Email" required>
-      <input type="password" name="Password" placeholder="Password" required>
-      <input type="text" name="Hobby Name" placeholder="Your Hobby Name" required>
-      <input type="text" name="Price" placeholder="Price (₹)" required>
-      <input type="text" name="Region" placeholder="Region / Location" required>
+  <input type="email" name="Email" placeholder="Your Email" required>
+  <input type="password" name="Password" placeholder="Password" required>
+  <input type="text" name="Hobby Name" placeholder="Your Hobby Name" required>
+  <input type="text" name="Price" placeholder="Price (₹)" required>
+  <input type="text" name="Region" placeholder="Region / Location" required>
 
-      <button type="submit">Submit for Verification</button>
-    </form>
+  <button type="submit">Submit for Verification</button>
+</form>
+
   </main>
 
   <script>
@@ -160,13 +162,14 @@
     });
 
     hobbyistBtn.addEventListener('click', () => {
-      signupForm.style.display = 'none';
-      hobbyForm.classList.remove('hidden-form');
-      hobbyistBtn.classList.add('active');
-      hobbyistBtn.classList.remove('inactive');
-      normalBtn.classList.remove('active');
-      normalBtn.classList.add('inactive');
-    });
+  signupForm.style.display = 'none';
+  hobbyForm.style.display = 'block'; // visible now
+  hobbyistBtn.classList.add('active');
+  hobbyistBtn.classList.remove('inactive');
+  normalBtn.classList.remove('active');
+  normalBtn.classList.add('inactive');
+});
+
 
     // Local signup (normal user)
     signupForm.addEventListener('submit', (e) => {
