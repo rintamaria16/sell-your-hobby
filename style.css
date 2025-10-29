@@ -1379,33 +1379,44 @@ address {
 
 
 
-/* --- FIX HEADER TITLE OVERLAP IN MOBILE VIEW --- */
 .header-top {
-  flex-wrap: wrap;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px 0;
+}
+
+.header-top .container {
+  display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-/* Make logo centered and separated properly */
-.header-top .logo h1 {
-  font-size: 1.6rem;
-  color: #fff;
-  margin: 10px auto;
+/* Logo centered by default */
+.logo {
   text-align: center;
-  display: block;
+  flex: 1 1 100%;
 }
 
-/* Adjust container for mobile */
+.logo h1 {
+  color: #fff;
+  font-size: 1.8rem;
+  margin: 10px 0;
+}
+
+/* Group buttons neatly on right side */
+.header-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Mobile view fix */
 @media (max-width: 768px) {
   .header-top .container {
-    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-  }
-
-  .header-btn-group {
-    order: 3;
+    gap: 10px;
   }
 
   .helpline-box {
@@ -1416,10 +1427,12 @@ address {
     order: 2;
   }
 
+  .header-btn-group {
+    order: 3;
+  }
+
   .logo h1 {
     font-size: 1.4rem;
-    text-align: center;
-    margin: 5px 0;
   }
 }
 
