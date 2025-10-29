@@ -1348,3 +1348,75 @@ address {
 
 
 
+
+
+
+
+
+
+
+
+/*-----------------------------------*\
+ * #HEADER TOP RESPONSIVE FIX
+\*-----------------------------------*/
+
+.header-top {
+  background-color: var(--white);
+  padding: 10px 0;
+}
+
+.header-top .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; /* allows items to move to new line on small screens */
+  gap: 10px;
+}
+
+/* Make each section (logo, contact, login) stack nicely */
+.helpline-box,
+.logo,
+.header-btn-group {
+  flex: 1 1 100%; /* full width on small screens */
+  text-align: center;
+}
+
+/* Adjust alignment for icons and text */
+.helpline-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Make button and icon smaller for mobile */
+.header-btn-group .btn {
+  font-size: 14px;
+  padding: 8px 14px;
+}
+
+/* Larger screens (tablet and up) */
+@media (min-width: 768px) {
+  .header-top .container {
+    flex-wrap: nowrap;
+  }
+
+  .helpline-box,
+  .logo,
+  .header-btn-group {
+    flex: 0 0 auto;
+    text-align: left;
+  }
+
+  .logo {
+    text-align: center;
+  }
+
+  .header-btn-group {
+    text-align: right;
+  }
+}
+
+
+
+
