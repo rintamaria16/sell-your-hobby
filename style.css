@@ -1309,44 +1309,6 @@ address {
 
 
 
-.header_more {
-  background-image: url("hero-banner.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-color: hsla(0, 0%, 0%, 0.7);
-  background-blend-mode: overlay;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  min-height: 140px; /* smaller for mobile */
-  padding: 60px 15px 30px;
-}
-
-/* For larger devices */
-@media (min-width: 580px) {
-  .header_more {
-    min-height: 180px;
-    padding: 70px 20px 40px;
-  }
-}
-
-@media (min-width: 768px) {
-  .header_more {
-    min-height: 200px;
-    padding: 80px 30px 50px;
-  }
-}
-
-@media (min-width: 992px) {
-  .header_more {
-    min-height: 250px;
-    padding: 100px 40px 60px;
-  }
-}
-
-
 
 
 
@@ -1357,23 +1319,18 @@ address {
 
 
 /*-----------------------------------*\
- * #HEADER TOP RESPONSIVE FIX
+ * #HEADER-TOP MOBILE FIX
 \*-----------------------------------*/
-
-.header-top {
-  background-color: var(--white);
-  padding: 10px 0;
-}
 
 .header-top .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap; /* allows items to move to new line on small screens */
+  flex-wrap: wrap; /* allows stacking on small screens */
   gap: 10px;
+  padding: 10px 15px;
 }
 
-/* Make each section (logo, contact, login) stack nicely */
 .helpline-box,
 .logo,
 .header-btn-group {
@@ -1381,7 +1338,6 @@ address {
   text-align: center;
 }
 
-/* Adjust alignment for icons and text */
 .helpline-box {
   display: flex;
   align-items: center;
@@ -1389,13 +1345,13 @@ address {
   gap: 8px;
 }
 
-/* Make button and icon smaller for mobile */
-.header-btn-group .btn {
-  font-size: 14px;
-  padding: 8px 14px;
+.header-btn-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Larger screens (tablet and up) */
+/* Tablet and Desktop view */
 @media (min-width: 768px) {
   .header-top .container {
     flex-wrap: nowrap;
@@ -1405,7 +1361,10 @@ address {
   .logo,
   .header-btn-group {
     flex: 0 0 auto;
-    text-align: left;
+  }
+
+  .helpline-box {
+    justify-content: flex-start;
   }
 
   .logo {
@@ -1413,10 +1372,6 @@ address {
   }
 
   .header-btn-group {
-    text-align: right;
+    justify-content: flex-end;
   }
 }
-
-
-
-
