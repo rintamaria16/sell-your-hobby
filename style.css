@@ -1349,7 +1349,6 @@ address {
 
 
 
-
 .header-top {
   background: rgba(0, 0, 0, 0.5);
   color: white;
@@ -1408,3 +1407,39 @@ address {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Fix for "SELL YOUR HOBBY" text logo */
+.header .logo h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #fff; /* or #222 if background is light */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.header .logo {
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Optional: add visibility on smaller screens */
+@media (max-width: 768px) {
+  .header .logo h1 {
+    font-size: 1.5rem;
+  }
+}
