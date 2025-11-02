@@ -1133,156 +1133,10 @@ address {
 
 
 
-
-
-/**
- * responsive for larger than 992px screen
- */
-
-@media (min-width: 992px) {
-
-  /**
-   * REUSED STYLE
-   */
-
-  .container { max-width: 1050px; }
-
-
-
-  /**
-   * HEADER
-   */
-
-  .header.active .header-top {
-    position: unset;
-    background: unset;
-  }
-
-  .nav-open-btn,
-  .navbar-top { display: none; }
-
-  .header-bottom { border-bottom: none; }
-
-  .header.active .header-bottom {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: var(--white);
-    color: var(--onyx);
-    box-shadow: 0 2px 5px hsla(0, 0%, 0%, 0.08);
-    transition: var(--transition);
-  }
-
-  .header-bottom .container { padding-block: 0; }
-
-  .header .navbar { all: unset; }
-
-  .navbar-list {
-    border-top: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .navbar-list li { border-bottom: none; }
-
-  .navbar-link {
-    color: var(--white);
-    --fs-4: 16px;
-    font-weight: unset;
-    text-transform: uppercase;
-    padding: 20px 15px;
-  }
-
-  .header.active .navbar-link { color: var(--onyx); }
-
-  .header.active .navbar-link:is(:hover, :focus) { color: var(--bright-navy-blue); }
-
-  .header.active .social-link {
-    color: var(--onyx);
-    border-color: hsla(0, 0%, 0%, 0.15);
-  }
-
-  .overlay { display: none; }
-
-
-
-  /**
-   * HERO
-   */
-
-  .hero .container { max-width: 740px; }
-
-
-
-  /**
-   * TOUR SEARCH
-   */
-
-  .tour-search-form { grid-template-columns: repeat(5, 1fr); }
-
-  .tour-search .btn {
-    --padding: 15px;
-    grid-column: unset;
-    margin-top: 0;
-  }
-
-
-
-  /**
-   * POPULAR
-   */
-
-  .popular-list { grid-template-columns: repeat(3, 1fr); }
-
-
-
-  /**
-   * PACKAGE
-   */
-
-  .meta-box { --fs-8: 13px; }
-
-  .meta-box > ion-icon { font-size: 15px; }
-
-
-
-  /**
-   * CTA 
-   */
-
-  .cta .section-title { max-width: 25ch; }
-
-
-
-  /**
-   * FOOTER
-   */
-
-  .footer-top .container {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
-  }
-
-  .footer-form { grid-column: unset; }
-
-  .form-wrapper { flex-direction: column; }
-
-  .footer-form .btn { width: 100%; }
-
-}
-
-
-
-
-
-
-
 /* --- Mobile View Fixes --- */
 @media (max-width: 768px) {
 
-  /* Hide the phone icon */
+  /* Hide phone icon */
   .header-top .contact,
   .header-top .contact a,
   .header-top ion-icon {
@@ -1305,25 +1159,62 @@ address {
     text-align: center;
   }
 
-  /* Fix button alignment */
+  /* ✅ Side-by-side button alignment */
   .header-btn-group {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
     justify-content: center;
-    gap: 12px;
+    align-items: center;
+    gap: 10px;
     margin-top: 10px;
   }
 
   /* Consistent button sizing */
   .btn.btn-primary,
   .login-btn {
-    width: 200px;
+    width: auto;
+    min-width: 120px;
     text-align: center;
+    padding: 8px 18px;
+    font-size: 14px;
   }
 
   /* Ensure BOOK NOW button doesn't overlap title */
   .btn.btn-primary {
-    margin-top: 10px;
+    margin-top: 0;
+  }
+
+  /* ✅ Hamburger Menu */
+  .nav-toggle-btn {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  /* ✅ Hide nav links by default on mobile */
+  .navbar-list {
+    display: none;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    z-index: 9;
+  }
+
+  /* ✅ Show nav links when active (toggle this class using JS) */
+  .navbar-list.active {
+    display: flex;
   }
 }
+
+
+
+
