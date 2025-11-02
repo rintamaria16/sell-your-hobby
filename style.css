@@ -1311,39 +1311,58 @@ address {
 
 
 
-@media (max-width: 600px) {
-  .header-top .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 8px;
+/* --- Mobile view adjustments --- */
+@media (max-width: 768px) {
+
+  /* hide social icons in header */
+  .header-top .social-icons,
+  .social-list {
+    display: none !important;
   }
 
+  /* stack and center buttons */
   .header-btn-group {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
   }
 
+  .btn.btn-primary,
+  .login-btn {
+    width: 70%;
+    max-width: 250px;
+    text-align: center;
+  }
+
+  /* ensure nav menu shows only links */
   .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--white);
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+  }
+
+  .navbar a {
+    padding: 10px;
+    color: var(--black);
+  }
+
+  /* center header logo and title */
+  .header-top .container {
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
+    text-align: center;
   }
-
-  .btn.btn-primary a {
-    color: white;
-    text-decoration: none;
-  }
-}
-
-
-.header .overlay {
-  background: transparent !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
 }
 
 
