@@ -983,68 +983,72 @@ address {
 
 
 
-
-/* --- Mobile View Final Fix --- */
+/* --- Mobile View Fixes --- */
 @media (max-width: 768px) {
 
-  /* Hide phone and social icons */
-  .header-top .contact,
-  .header-top ion-icon,
+  /* Hide the phone icon & social icons */
+  .helpline-box,
   .social-list,
   .social-icons {
     display: none !important;
   }
 
-  /* ✅ Make sure the hamburger icon is visible */
-  .nav-toggle-btn {
-    display: block !important;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-    color: white;
-    cursor: pointer;
-    z-index: 10;
+  /* Make logo one line and centered */
+  .header-top .logo h1 {
+    font-size: 1.4rem;
+    white-space: nowrap;
+    text-align: center;
   }
 
-  /* ✅ Place the two buttons side by side */
+  /* Fix button group */
   .header-btn-group {
-    display: flex !important;
-    flex-direction: row !important;
+    display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
-    margin-top: 15px;
+    gap: 10px; /* space between Book Now & Login */
   }
 
-  /* Ensure both buttons have same size */
+  /* Make buttons equal and inline */
   .btn.btn-primary,
-  .login-btn {
-    width: auto !important;
-    min-width: 120px;
+  .btn.btn-secondary {
+    width: auto;
+    min-width: 110px;
     text-align: center;
-    padding: 8px 18px;
-    font-size: 14px;
   }
 
-  /* Hide the nav menu until clicked */
-  .navbar-list {
+  /* Show hamburger menu properly */
+  .nav-open-btn {
+    display: inline-flex;
+    font-size: 1.8rem;
+    color: white;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Hide full navbar until clicked */
+  .navbar {
     display: none;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.85);
-    width: 100%;
     position: absolute;
     top: 60px;
     left: 0;
+    right: 0;
+    background: var(--black);
     text-align: center;
-    padding: 15px 0;
+    padding: 1rem 0;
+    z-index: 10;
   }
 
-  .navbar-list.active {
-    display: flex;
+  .navbar.active {
+    display: block;
+  }
+
+  /* When hamburger menu is active */
+  .nav-open-btn.active ion-icon {
+    transform: rotate(90deg);
+    transition: 0.3s ease;
   }
 }
-
 
 
 
