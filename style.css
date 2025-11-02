@@ -986,37 +986,37 @@ address {
 /* --- Mobile View Fixes --- */
 @media (max-width: 768px) {
 
-  /* Hide the phone icon & social icons */
+  /* Hide unwanted elements */
   .helpline-box,
   .social-list,
   .social-icons {
     display: none !important;
   }
 
-  /* Make logo one line and centered */
+  /* Header top container layout */
+  .header-top .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Logo + Hamburger on same line */
+  .header-top .logo-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+  }
+
+  /* Make sure logo doesn't wrap */
   .header-top .logo h1 {
     font-size: 1.4rem;
     white-space: nowrap;
-    text-align: center;
   }
 
-  /* Fix button group */
-  .header-btn-group {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px; /* space between Book Now & Login */
-  }
-
-  /* Make buttons equal and inline */
-  .btn.btn-primary,
-  .btn.btn-secondary {
-    width: auto;
-    min-width: 110px;
-    text-align: center;
-  }
-
-  /* Show hamburger menu properly */
+  /* 3-line menu style */
   .nav-open-btn {
     display: inline-flex;
     font-size: 1.8rem;
@@ -1026,7 +1026,22 @@ address {
     cursor: pointer;
   }
 
-  /* Hide full navbar until clicked */
+  /* Button group below header */
+  .header-btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn.btn-primary,
+  .btn.btn-secondary {
+    width: auto;
+    min-width: 120px;
+    text-align: center;
+  }
+
+  /* Navbar hidden until open */
   .navbar {
     display: none;
     position: absolute;
@@ -1043,7 +1058,6 @@ address {
     display: block;
   }
 
-  /* When hamburger menu is active */
   .nav-open-btn.active ion-icon {
     transform: rotate(90deg);
     transition: 0.3s ease;
