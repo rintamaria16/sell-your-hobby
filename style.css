@@ -982,27 +982,26 @@ address {
 
 
 
-
-/* --- Mobile View Fixes --- */
 @media (max-width: 768px) {
 
-  /* Hide unwanted elements */
+  /* Hide helpline for mobile */
   .helpline-box,
   .social-list,
   .social-icons {
     display: none !important;
   }
 
-  /* Header top container layout */
+  /* Reset container layout to stack */
   .header-top .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
+    width: 100%;
   }
 
-  /* Logo + Hamburger on same line */
-  .header-top .logo-nav {
+  /* ✅ Logo and 3-line menu in one row */
+  .logo-nav {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -1010,33 +1009,30 @@ address {
     padding: 0 16px;
   }
 
-  /* Make sure logo doesn't wrap */
-  .header-top .logo h1 {
+  .logo-nav .logo h1 {
+    color: white;
     font-size: 1.4rem;
     white-space: nowrap;
   }
 
-  /* 3-line menu style */
-  .nav-open-btn {
-    display: inline-flex;
+  .logo-nav .nav-open-btn {
     font-size: 1.8rem;
     color: white;
-    background: transparent;
+    background: none;
     border: none;
     cursor: pointer;
   }
 
-  /* Button group below header */
+  /* ✅ Buttons (Book Now + Login) in next line, side-by-side */
   .header-btn-group {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    flex-wrap: nowrap;
   }
 
-  .btn.btn-primary,
-  .btn.btn-secondary {
-    width: auto;
+  .header-btn-group .btn {
     min-width: 120px;
     text-align: center;
   }
@@ -1058,11 +1054,9 @@ address {
     display: block;
   }
 
+  /* Smooth animation for 3-line rotation */
   .nav-open-btn.active ion-icon {
     transform: rotate(90deg);
     transition: 0.3s ease;
   }
 }
-
-
-
