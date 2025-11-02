@@ -1279,43 +1279,51 @@ address {
 
 
 
-
-
+/* --- Mobile View Fixes --- */
 @media (max-width: 768px) {
-  .button-group {
+
+  /* Hide the phone icon */
+  .header-top .contact,
+  .header-top .contact a,
+  .header-top ion-icon {
+    display: none !important;
+  }
+
+  /* Hide social icons */
+  .social-list,
+  .social-icons {
+    display: none !important;
+  }
+
+  /* Center header content */
+  .header-top .container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 10px;
-    flex-wrap: wrap;
+    text-align: center;
   }
 
-  .book-btn, 
+  /* Fix button alignment */
+  .header-btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  /* Consistent button sizing */
+  .btn.btn-primary,
   .login-btn {
-    width: auto;
-    padding: 8px 18px;
-    font-size: 14px;
+    width: 200px;
+    text-align: center;
   }
 
-  /* Optional: adjust title spacing */
-  .hero-section h1 {
-    font-size: 22px;
-    margin-bottom: 10px;
-  }
-
-  /* Make sure the 3-line menu stays visible */
-  .menu-icon {
-    display: block;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 24px;
-    cursor: pointer;
+  /* Ensure BOOK NOW button doesn't overlap title */
+  .btn.btn-primary {
+    margin-top: 10px;
   }
 }
-
-
-
-
-
-
-
