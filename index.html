@@ -875,12 +875,16 @@
 
   
 
-  const navToggle = document.querySelector('.nav-toggle-btn');
+
+  const toggleBtn = document.querySelector('.nav-toggle-btn');
   const navList = document.querySelector('.navbar-list');
 
-  navToggle.addEventListener('click', () => {
-    navList.classList.toggle('active');
-  });
+  if (toggleBtn && navList) {
+    toggleBtn.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+  }
+
 
 </script>
 
