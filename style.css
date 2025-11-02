@@ -984,232 +984,62 @@ address {
 
 
 
-/**
- * responsive for larger than 768px screen
- */
-
-@media (min-width: 768px) {
-
-  /**
-   * CUSTOM PROPERTY
-   */
-
-  :root {
-
-    /**
-     * typography
-     */
-
-    --fs-5: 15px;
-
-  }
-
-
-
-  /**
-   * REUSED STYLE
-   */
-
-  .container { max-width: 800px; }
-
-  .section-text {
-    max-width: 60ch;
-    margin-inline: auto;
-  }
-
-
-
-  /**
-   * HEADER
-   */
-
-  .helpline-box {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .helpline-box .wrapper {
-    display: block;
-    color: var(--white);
-    font-size: var(--fs-6);
-  }
-
-  .social-list { gap: 10px; }
-
-
-
-  /**
-   * POPULAR
-   */
-
-  .popular-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-bottom: 50px;
-  }
-
-  .popular-list > li:not(:last-child) { margin-bottom: 0; }
-
-  .popular-card .card-content { right: 20px; }
-
-
-
-  /**
-   * PACKAGE
-   */
-
-  .package-list { margin-bottom: 50px; }
-
-  .package-list > li:not(:last-child) { margin-bottom: 40px; }
-
-  .package-card {
-    display: grid;
-    grid-template-columns: 1.3fr 1.5fr 1fr;
-  }
-
-  .package-card .card-banner { height: 100%; }
-
-  .package-card .card-content { padding: 40px; }
-
-  .package-card .card-price {
-    display: grid;
-    place-content: center;
-  }
-
-  .package-card .card-price .wrapper { margin-bottom: 15px; }
-
-
-
-  /**
-   * GALLERY
-   */
-
-  .gallery { padding-bottom: calc(var(--section-padding * 2)); }
-
-  .gallery-list {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-
-  .gallery-image { border-radius: var(--radius-25); }
-
-
-
-  /**
-   * CTA
-   */
-
-  .cta .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .cta-content { width: calc(100% - 225px); }
-
-  .cta .section-text { margin-inline: 0; }
-
-
-
-  /**
-   * FOOTER
-   */
-
-  .form-wrapper {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .footer-form .input-field { margin-bottom: 0; }
-
-  .footer-form .btn { width: max-content; }
-
-}
-
-
-
-/* --- Mobile View Fixes --- */
+/* --- Mobile View Final Fix --- */
 @media (max-width: 768px) {
 
-  /* Hide phone icon */
+  /* Hide phone and social icons */
   .header-top .contact,
-  .header-top .contact a,
-  .header-top ion-icon {
-    display: none !important;
-  }
-
-  /* Hide social icons */
+  .header-top ion-icon,
   .social-list,
   .social-icons {
     display: none !important;
   }
 
-  /* Center header content */
-  .header-top .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    text-align: center;
+  /* ✅ Make sure the hamburger icon is visible */
+  .nav-toggle-btn {
+    display: block !important;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
   }
 
-  /* ✅ Side-by-side button alignment */
+  /* ✅ Place the two buttons side by side */
   .header-btn-group {
-    display: flex;
-    flex-direction: row;
+    display: flex !important;
+    flex-direction: row !important;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin-top: 10px;
+    gap: 12px;
+    margin-top: 15px;
   }
 
-  /* Consistent button sizing */
+  /* Ensure both buttons have same size */
   .btn.btn-primary,
   .login-btn {
-    width: auto;
+    width: auto !important;
     min-width: 120px;
     text-align: center;
     padding: 8px 18px;
     font-size: 14px;
   }
 
-  /* Ensure BOOK NOW button doesn't overlap title */
-  .btn.btn-primary {
-    margin-top: 0;
-  }
-
-  /* ✅ Hamburger Menu */
-  .nav-toggle-btn {
-    display: block;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 10;
-  }
-
-  /* ✅ Hide nav links by default on mobile */
+  /* Hide the nav menu until clicked */
   .navbar-list {
     display: none;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
+    width: 100%;
     position: absolute;
     top: 60px;
-    right: 0;
-    width: 100%;
+    left: 0;
     text-align: center;
     padding: 15px 0;
-    z-index: 9;
   }
 
-  /* ✅ Show nav links when active (toggle this class using JS) */
   .navbar-list.active {
     display: flex;
   }
