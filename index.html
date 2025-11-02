@@ -876,14 +876,17 @@
   
 
 
-  const toggleBtn = document.querySelector('.nav-toggle-btn');
-  const navList = document.querySelector('.navbar-list');
+  const navOpenBtn = document.querySelector('[data-nav-open-btn]');
+const nav = document.querySelector('[data-navbar]');
+const overlay = document.querySelector('[data-overlay]');
 
-  if (toggleBtn && navList) {
-    toggleBtn.addEventListener('click', () => {
-      navList.classList.toggle('active');
-    });
-  }
+if (navOpenBtn && nav) {
+  navOpenBtn.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    overlay.classList.toggle('active');
+  });
+}
+
 
 
 </script>
