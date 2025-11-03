@@ -235,9 +235,11 @@ body { background: var(--white); }
 
 
 .header-top .container {
-  display: flex;
+ display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 
@@ -1132,6 +1134,27 @@ address {
   .footer-form .input-field { margin-bottom: 0; }
 
   .footer-form .btn { width: max-content; }
+
+.header-top .logo-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header-btn-group {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+
+
+
+
+  
 
 }
 
