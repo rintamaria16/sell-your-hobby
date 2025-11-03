@@ -1135,26 +1135,7 @@ address {
 
   .footer-form .btn { width: max-content; }
 
-.header-top .logo-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.header-btn-group {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-
-
-
-
-
-  
+ 
 
 }
 
@@ -1346,5 +1327,35 @@ address {
   min-height: 160px;
   padding-top: 70px;
 }
+
+/* Mobile view: Only logo, 3 lines, and login button visible properly */
+@media (max-width: 768px) {
+  .header-top .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .header-btn-group {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Hide book now, call, or social icons if they exist elsewhere */
+  .helpline-box,
+  .social-list,
+  .header .btn-primary {
+    display: none !important;
+  }
+}
+
 
 
