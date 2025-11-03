@@ -233,12 +233,17 @@ body { background: var(--white); }
   background: var(--gunmetal);
 }
 
+
 .header-top .container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: flex-start;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
+
+
+
+
+
 
 .helpline-box .wrapper { display: none; }
 
