@@ -128,7 +128,12 @@
 
     <!-- Hobbyist Signup Form (Email Submission) -->
   <!-- Hobbyist Signup Form (Hidden initially) -->
-<form id="hobbyForm" action="https://formsubmit.co/rintamaria16@gmail.com" method="POST" style="display:none;">
+<form id="hobbyForm"
+      action="https://formsubmit.co/rintamaria16@gmail.com"
+      method="POST"
+      onsubmit="return showThankYou(event)"
+      style="display:none;">
+
   <input type="hidden" name="_subject" value="New Hobbyist Submission!">
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_template" value="table">
@@ -187,6 +192,39 @@
       };
       reader.readAsDataURL(file);
     });
+ 
+  function showThankYou(e) {
+    e.preventDefault(); // stop normal submission for a moment
+
+    // create a small popup or message
+    const msg = document.createElement('div');
+    msg.innerHTML = `
+      <div style="
+        position:fixed;top:0;left:0;width:100%;height:100%;
+        display:flex;align-items:center;justify-content:center;
+        background:rgba(0,0,0,0.6);z-index:9999;">
+        <div style="
+          background:#fff;padding:30px 40px;border-radius:10px;
+          text-align:center;max-width:320px;">
+          <h3 style="color:#007BFF;">Thank you!</h3>
+          <p>We are verifying your submission.<br>
+          A confirmation email will be sent soon.</p>
+          <p>Redirecting to home page...</p>
+        </div>
+      </div>`;
+    document.body.appendChild(msg);
+
+    // let the form still submit silently
+    e.target.submit();
+
+    // redirect to home after 3 seconds
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 3000);
+
+    return false; // stop default navigation now
+  }
+
   </script>
 </body>
 </html>
