@@ -1285,6 +1285,56 @@ address {
 
 
 
+
+/* Container */
+.dropdown {
+  position: relative;
+}
+
+/* Dropdown menu hidden by default */
+.dropdown-menu {
+  display: none;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  background: #fff;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 180px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 20;
+}
+
+/* Desktop: Show on hover */
+@media (min-width: 768px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+/* Mobile: Show using JS toggle */
+.dropdown.show .dropdown-menu {
+  display: block;
+}
+
+/* Dropdown item styling */
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #000;
+}
+
+.dropdown-menu li a:hover {
+  background: #eee;
+}
+
+
+
+
+
 /**
  * responsive for larger than 1200px screen
  */
