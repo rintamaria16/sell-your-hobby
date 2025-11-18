@@ -912,6 +912,19 @@ if (navOpenBtn && nav) {
 }
 
 
+  
+  const dropdownToggle = document.querySelector(".dropdown-toggle");
+  const dropdown = document.querySelector(".dropdown");
+
+  dropdownToggle.addEventListener("click", function (e) {
+    // Prevent page jump
+    e.preventDefault();
+
+    // Toggle dropdown for mobile
+    dropdown.classList.toggle("show");
+  });
+
+  
 
 </script>
 
