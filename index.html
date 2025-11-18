@@ -897,19 +897,34 @@
     }
   });
 
+
+
   
 
 
-  const navOpenBtn = document.querySelector('[data-nav-open-btn]');
+const navOpenBtn = document.querySelector('[data-nav-open-btn]');
+const navCloseBtn = document.querySelector('[data-nav-close-btn]');
 const nav = document.querySelector('[data-navbar]');
 const overlay = document.querySelector('[data-overlay]');
 
-if (navOpenBtn && nav) {
-  navOpenBtn.addEventListener('click', () => {
-    nav.classList.toggle('active');
-    overlay.classList.toggle('active');
-  });
-}
+// Open menu
+navOpenBtn?.addEventListener('click', () => {
+  nav.classList.add('active');
+  overlay.classList.add('active');
+});
+
+// Close menu
+navCloseBtn?.addEventListener('click', () => {
+  nav.classList.remove('active');
+  overlay.classList.remove('active');
+});
+
+// Close when clicking overlay
+overlay?.addEventListener('click', () => {
+  nav.classList.remove('active');
+  overlay.classList.remove('active');
+});
+
 
 
   
